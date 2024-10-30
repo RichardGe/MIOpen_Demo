@@ -32,8 +32,15 @@ MIOPEN_SYSTEM_DB_PATH=H:\PROJECTS\096_rocm\miOpen\git\MIOpen\build_release\INSTA
 PATH=C:\Program Files\AMD\ROCm\6.2\bin;%PATH%
 ```
 
-explaination:
-adding `C:\Program Files\AMD\ROCm\6.2\bin` to `PATH` is needed to access DLLs like `hiprtc0602.dll`
-`MIOPEN_SYSTEM_DB_PATH` is the path 
+explainations:
 
+adding `C:\Program Files\AMD\ROCm\6.2\bin` to `PATH` is needed to access DLLs like `hiprtc0602.dll`
+
+
+`MIOPEN_SYSTEM_DB_PATH` is the path that is needed to build some bitcode cache. If you don't set it, you may have error looking like that:
+`MIOpen Error: ai_heuristics.cpp:39: Unable to load file: gfx908_metadata.tn.model`
+
+
+Speaking of envvar, if your project is using rocblas, you may also need to add this one:
+`ROCBLAS_TENSILE_LIBPATH=C:\Program Files\AMD\ROCm\6.2\bin\rocblas\library`
 
